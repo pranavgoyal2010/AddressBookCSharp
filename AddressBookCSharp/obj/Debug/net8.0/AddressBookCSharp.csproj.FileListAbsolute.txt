@@ -1,0 +1,14 @@
+C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\bin\Debug\net8.0\AddressBookCSharp.exe
+C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\bin\Debug\net8.0\AddressBookCSharp.deps.json
+C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\bin\Debug\net8.0\AddressBookCSharp.runtimeconfig.json
+C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\bin\Debug\net8.0\AddressBookCSharp.dll
+C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\bin\Debug\net8.0\AddressBookCSharp.pdb
+C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\obj\Debug\net8.0\AddressBookCSharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\obj\Debug\net8.0\AddressBookCSharp.AssemblyInfoInputs.cache
+C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\obj\Debug\net8.0\AddressBookCSharp.AssemblyInfo.cs
+C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\obj\Debug\net8.0\AddressBookCSharp.csproj.CoreCompileInputs.cache
+C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\obj\Debug\net8.0\AddressBookCSharp.dll
+C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\obj\Debug\net8.0\refint\AddressBookCSharp.dll
+C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\obj\Debug\net8.0\AddressBookCSharp.pdb
+C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\obj\Debug\net8.0\AddressBookCSharp.genruntimeconfig.cache
+C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\obj\Debug\net8.0\ref\AddressBookCSharp.dll
