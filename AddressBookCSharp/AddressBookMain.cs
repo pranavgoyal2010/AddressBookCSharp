@@ -36,7 +36,10 @@ public class AddressBookMain
 
         addressBook.Add(contact);
 
-        //Console.WriteLine(addressBook.ToString());
+        foreach (Contact c in addressBook)
+        {
+            c.PrintContact();
+        }
     }
 }
 
