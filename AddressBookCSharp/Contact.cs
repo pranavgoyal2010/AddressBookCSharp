@@ -10,5 +10,18 @@
         public string PostalCode { get; set; }
         public int PhoneNumber { get; set; }
         public string Email { get; set; }
+
+        public void PrintContact()
+        {
+            Console.WriteLine("CONTACT INFO");
+            Console.WriteLine("First Name : " + FirstName);
+            Console.WriteLine("Last Name : " + LastName);
+            Console.WriteLine("Address : " + Address);
+            Console.WriteLine("City : " + City);
+            Console.WriteLine("State : " + State);
+            Console.WriteLine("Postal Code : " + PostalCode);
+            Console.WriteLine("Phone Number : " + PhoneNumber);
+            Console.WriteLine("Email : " + Email);
+        }
     }
 }
