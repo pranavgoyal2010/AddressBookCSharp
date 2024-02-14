@@ -12,3 +12,4 @@ C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\obj\Debug\
 C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\obj\Debug\net8.0\AddressBookCSharp.pdb
 C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\obj\Debug\net8.0\AddressBookCSharp.genruntimeconfig.cache
 C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\obj\Debug\net8.0\ref\AddressBookCSharp.dll
+C:\Users\prana\Desktop\BridgeLabz\AddressBookCSharp\AddressBookCSharp\obj\Debug\net8.0\AddressBookCSharp.sourcelink.json

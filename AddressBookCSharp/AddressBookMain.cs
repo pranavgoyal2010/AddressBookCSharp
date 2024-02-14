@@ -1,6 +1,6 @@
 ﻿namespace AddressBook;
 
-public class Program
+public class AddressBookMain
 {
     static void Main(string[] args)
     {
