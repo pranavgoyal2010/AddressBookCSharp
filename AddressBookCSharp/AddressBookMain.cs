@@ -16,7 +16,7 @@ public class AddressBookMain
         Console.WriteLine("Enter Last Name : ");
         contact.LastName = Console.ReadLine();
 
-        Console.WriteLine("Enter Address Name : ");
+        Console.WriteLine("Enter Address: ");
         contact.Address = Console.ReadLine();
 
         Console.WriteLine("Enter City : ");
@@ -29,7 +29,7 @@ public class AddressBookMain
         contact.PostalCode = Console.ReadLine();
 
         Console.WriteLine("Enter Phone Number : ");
-        contact.PhoneNumber = Convert.ToInt32(Console.ReadLine());
+        contact.PhoneNumber = Console.ReadLine();
 
         Console.WriteLine("Enter Email : ");
         contact.Email = Console.ReadLine();
