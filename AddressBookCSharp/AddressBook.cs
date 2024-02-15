@@ -1,4 +1,6 @@
-﻿namespace AddressBookCSharp;
+﻿using System.Text.RegularExpressions;
+
+namespace AddressBookCSharp;
 
 public class AddressBook
 {
@@ -46,11 +48,25 @@ public class AddressBook
                     contact.PostalCode = Console.ReadLine();
 
                     Console.WriteLine("Enter Phone Number : ");
-                    contact.PhoneNumber = Console.ReadLine();
+                    string input = Console.ReadLine();
+                    if (!isValidPhoneNumber(input))
+                    {
+                        Console.WriteLine("Invalid Phone number");
+                        break;
+                    }
+
+                    else
+                        contact.PhoneNumber = input;
 
                     Console.WriteLine("Enter Email : ");
-                    contact.Email = Console.ReadLine();
-
+                    input = Console.ReadLine();
+                    if (!isValidEmail(input))
+                    {
+                        Console.WriteLine("Invalid email");
+                        break;
+                    }
+                    else
+                        contact.Email = input;
 
 
                     //ADDING NEW CONTACT
@@ -226,13 +242,18 @@ public class AddressBook
             }
         }
 
+    }
 
+    public bool isValidEmail(string input)
+    {
+        string pattern = @"^[a-zA-Z]([\w]*|\.[\w]+)*\@[a-zA-Z0-9]+\.[a-z]{2,3}$";
+        return Regex.IsMatch(input, pattern);
+    }
 
-
-
-
-
-
+    public bool isValidPhoneNumber(string input)
+    {
+        string pattern = @"^[0-9]{10}$";
+        return Regex.IsMatch(input, pattern);
     }
 }
 
