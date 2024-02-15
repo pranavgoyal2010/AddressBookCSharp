@@ -55,7 +55,7 @@ public class AddressBookMain
 
         //EDITING CONTACT
 
-        Console.WriteLine("Enter first name and last name to edit");
+        Console.WriteLine("Enter first name and last name of contact to edit");
 
         string firstName = Console.ReadLine();
         string lastName = Console.ReadLine();
@@ -141,6 +141,40 @@ public class AddressBookMain
             contactToEdit.PrintContact();
         }
 
+        Console.WriteLine();
+
+        Console.WriteLine("Enter first name and last name of contact to delete");
+
+        firstName = Console.ReadLine();
+        lastName = Console.ReadLine();
+        firstName = firstName.ToLower();
+        lastName = lastName.ToLower();
+
+        Contact? contactToDelete = null;
+
+        foreach (Contact c in addressBook)
+        {
+            if ((c.FirstName.ToLower()).Equals(firstName) && (c.LastName.ToLower()).Equals(lastName))
+            {
+                contactToDelete = c;
+                addressBook.Remove(c);
+                Console.WriteLine("Contact deleted");
+                break;
+            }
+        }
+
+
+        if (contactToDelete == null)
+        {
+            Console.WriteLine("Contact does not exist");
+        }
+
+        Console.WriteLine();
+
+        foreach (Contact c in addressBook)
+        {
+            c.PrintContact();
+        }
     }
 }
 
