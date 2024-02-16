@@ -16,89 +16,89 @@
                 Console.WriteLine("3. Display address book");
                 Console.WriteLine("4. Exit");
 
-                int option = Convert.ToInt32(Console.ReadLine());
-
-                switch (option)
+                try
                 {
-                    case 1:
-                        Console.WriteLine("Enter name for new Address book");
-                        string? name = Console.ReadLine();
-                        AddressBook addressBook = new AddressBook();
+                    int option = Convert.ToInt32(Console.ReadLine());
 
-                        if (name == null)
-                        {
-                            Console.WriteLine("Please enter name again");
-                        }
-                        else
-                        {
-                            dict.Add(name, addressBook);
-                        }
-                        Console.WriteLine();
-                        break;
+                    switch (option)
+                    {
+                        case 1:
+                            Console.WriteLine("Enter name for new Address book");
+                            string? name = Console.ReadLine();
+                            AddressBook addressBook = new AddressBook();
 
-
-                    case 2:
-                        if (dict.Count == 0)
-                        {
-                            Console.WriteLine("No address book created yet");
+                            if (name == null)
+                            {
+                                //Console.WriteLine("Please enter name again");
+                                throw new ArgumentNullException("Please enter name again");
+                            }
+                            else
+                            {
+                                dict.Add(name, addressBook);
+                            }
                             Console.WriteLine();
                             break;
-                        }
-                        Console.WriteLine("Enter name of requested address book");
-                        name = Console.ReadLine();
-                        bool flag = false;
-                        if (name == null)
-                        {
-                            Console.WriteLine("Please enter name again");
-                            break;
-                        }
-                        else
-                        {
-                            foreach (KeyValuePair<string, AddressBook> kvp in dict)
+
+
+                        case 2:
+                            if (dict.Count == 0)
                             {
-                                if ((kvp.Key.ToLower()).Equals(name.ToLower()))
+                                throw new InvalidOperationException("No address book created yet");
+                            }
+                            Console.WriteLine("Enter name of requested address book");
+                            name = Console.ReadLine();
+                            bool flag = false;
+                            if (name == null)
+                            {
+                                throw new ArgumentNullException("Please enter name again");
+                            }
+                            else
+                            {
+                                foreach (KeyValuePair<string, AddressBook> kvp in dict)
                                 {
-                                    flag = true;
-                                    kvp.Value.AddressBookOperations();
+                                    if ((kvp.Key.ToLower()).Equals(name.ToLower()))
+                                    {
+                                        flag = true;
+                                        kvp.Value.AddressBookOperations();
+                                    }
                                 }
+
                             }
 
-                        }
+                            if (!flag)
+                                Console.WriteLine("Address book name does not exist");
 
-                        if (!flag)
-                            Console.WriteLine("Address book name does not exist");
+                            Console.WriteLine();
 
-                        Console.WriteLine();
+                            break;
 
-                        break;
-
-                    case 3:
-                        //int count = 1;
-                        if (dict.Count == 0)
-                        {
-                            Console.WriteLine("No address book created yet");
+                        case 3:
+                            //int count = 1;
+                            if (dict.Count == 0)
+                            {
+                                throw new InvalidOperationException("No address book created yet");
+                            }
+                            foreach (KeyValuePair<string, AddressBook> kvp in dict)
+                            {
+                                Console.WriteLine(kvp.Key);
+                            }
                             Console.WriteLine();
                             break;
-                        }
-                        foreach (KeyValuePair<string, AddressBook> kvp in dict)
-                        {
-                            Console.WriteLine(kvp.Key);
-                        }
-                        Console.WriteLine();
-                        break;
 
 
-                    default:
-                        isTrue = false;
-                        break;
+                        default:
+                            isTrue = false;
+                            break;
+                    }
                 }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
             }
 
-
-
         }
-
-
 
     }
 }
