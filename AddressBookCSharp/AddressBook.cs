@@ -4,9 +4,15 @@ namespace AddressBookCSharp;
 
 public class AddressBook
 {
+    List<Contact> list;
+
+    public AddressBook()
+    {
+        this.list = new List<Contact>();
+    }
     public void AddressBookOperations()
     {
-        List<Contact> addressBook = new List<Contact>();
+
         bool isTrue = true;
 
         while (isTrue)
@@ -71,7 +77,7 @@ public class AddressBook
 
                         //ADDING NEW CONTACT
 
-                        addressBook.Add(contact);
+                        list.Add(contact);
 
                         Console.WriteLine("Contact added");
 
@@ -84,12 +90,12 @@ public class AddressBook
 
                     case 2:
                         //EDITING CONTACT
-                        if (addressBook.Count == 0)
+                        if (list.Count == 0)
                         {
                             //Console.WriteLine("Address Book is empty");
                             //Console.WriteLine();
                             //break;
-                            throw new InvalidOperationException("Address Book is empty");
+                            throw new InvalidOperationException("contact list is empty");
                         }
                         Console.WriteLine("Enter first name and last name of contact to edit");
 
@@ -100,7 +106,7 @@ public class AddressBook
 
                         Contact? contactToEdit = null;
 
-                        foreach (Contact c in addressBook)
+                        foreach (Contact c in list)
                         {
                             if ((c.FirstName.ToLower()).Equals(firstName) && (c.LastName.ToLower()).Equals(lastName))
                             {
@@ -180,9 +186,9 @@ public class AddressBook
 
                     case 3:
                         //Console.WriteLine();
-                        if (addressBook.Count == 0)
+                        if (list.Count == 0)
                         {
-                            throw new InvalidOperationException("Address Book is empty");
+                            throw new InvalidOperationException("contact list is empty");
                         }
                         Console.WriteLine("Enter first name and last name of contact to delete");
 
@@ -191,14 +197,14 @@ public class AddressBook
                         firstName = firstName.ToLower();
                         lastName = lastName.ToLower();
 
-                        Contact? contactToDelete = null;
+                        Contact contactToDelete = null;
 
-                        foreach (Contact c in addressBook)
+                        foreach (Contact c in list)
                         {
                             if ((c.FirstName.ToLower()).Equals(firstName) && (c.LastName.ToLower()).Equals(lastName))
                             {
                                 contactToDelete = c;
-                                addressBook.Remove(c);
+                                list.Remove(c);
                                 Console.WriteLine("Contact deleted");
                                 break;
                             }
@@ -220,11 +226,11 @@ public class AddressBook
                         break;
 
                     case 4:
-                        if (addressBook.Count == 0)
+                        if (list.Count == 0)
                         {
-                            throw new InvalidOperationException("Address Book is empty");
+                            throw new InvalidOperationException("contact list is empty");
                         }
-                        foreach (Contact c in addressBook)
+                        foreach (Contact c in list)
                         {
                             c.PrintContact();
                             Console.WriteLine();

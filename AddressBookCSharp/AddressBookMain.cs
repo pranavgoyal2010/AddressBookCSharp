@@ -59,7 +59,9 @@
                                     if ((kvp.Key.ToLower()).Equals(name.ToLower()))
                                     {
                                         flag = true;
-                                        kvp.Value.AddressBookOperations();
+                                        AddressBook ab = kvp.Value;
+                                        ab.AddressBookOperations();
+                                        dict[name] = ab;
                                     }
                                 }
 
