@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\prana\\Desktop\\BridgeLabz\\AddressBookCSharp\\AddressBookCSharp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8CD2E689-4B90-4F33-8492-79B6A7AB27CF}|AddressBookCSharp.csproj|c:\\users\\prana\\desktop\\bridgelabz\\addressbookcsharp\\addressbookcsharp\\addressbookmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CD2E689-4B90-4F33-8492-79B6A7AB27CF}|AddressBookCSharp.csproj|solutionrelative:addressbookmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8CD2E689-4B90-4F33-8492-79B6A7AB27CF}|AddressBookCSharp.csproj|c:\\users\\prana\\desktop\\bridgelabz\\addressbookcsharp\\addressbookcsharp\\addressbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8CD2E689-4B90-4F33-8492-79B6A7AB27CF}|AddressBookCSharp.csproj|solutionrelative:addressbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8CD2E689-4B90-4F33-8492-79B6A7AB27CF}|AddressBookCSharp.csproj|c:\\users\\prana\\desktop\\bridgelabz\\addressbookcsharp\\addressbookcsharp\\contact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8CD2E689-4B90-4F33-8492-79B6A7AB27CF}|AddressBookCSharp.csproj|solutionrelative:contact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8CD2E689-4B90-4F33-8492-79B6A7AB27CF}|AddressBookCSharp.csproj|c:\\users\\prana\\desktop\\bridgelabz\\addressbookcsharp\\addressbookcsharp\\addressbookmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8CD2E689-4B90-4F33-8492-79B6A7AB27CF}|AddressBookCSharp.csproj|solutionrelative:addressbookmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,23 +22,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "AddressBookMain.cs",
               "DocumentMoniker": "C:\\Users\\prana\\Desktop\\BridgeLabz\\AddressBookCSharp\\AddressBookCSharp\\AddressBookMain.cs",
               "RelativeDocumentMoniker": "AddressBookMain.cs",
               "ToolTip": "C:\\Users\\prana\\Desktop\\BridgeLabz\\AddressBookCSharp\\AddressBookCSharp\\AddressBookMain.cs",
               "RelativeToolTip": "AddressBookMain.cs",
-              "ViewState": "AQIAAGEAAAAAAAAAAAAQwDUAAABPAAAA",
+              "ViewState": "AQIAAGgAAAAAAAAAAAAAAJ0AAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-15T08:55:34.185Z"
+              "WhenOpened": "2024-02-15T08:55:34.185Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Contact.cs",
               "DocumentMoniker": "C:\\Users\\prana\\Desktop\\BridgeLabz\\AddressBookCSharp\\AddressBookCSharp\\Contact.cs",
               "RelativeDocumentMoniker": "Contact.cs",
@@ -50,13 +51,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AddressBook.cs",
               "DocumentMoniker": "C:\\Users\\prana\\Desktop\\BridgeLabz\\AddressBookCSharp\\AddressBookCSharp\\AddressBook.cs",
               "RelativeDocumentMoniker": "AddressBook.cs",
               "ToolTip": "C:\\Users\\prana\\Desktop\\BridgeLabz\\AddressBookCSharp\\AddressBookCSharp\\AddressBook.cs",
               "RelativeToolTip": "AddressBook.cs",
-              "ViewState": "AQIAAPIAAAAAAAAAAAAgwEYBAAAAAAAA",
+              "ViewState": "AQIAAHcAAAAAAAAAAAAgwAMBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-14T04:59:43.727Z",
               "EditorCaption": ""

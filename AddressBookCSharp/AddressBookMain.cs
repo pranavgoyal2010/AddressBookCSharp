@@ -41,9 +41,10 @@ namespace AddressBookCSharp
             {
                 Console.WriteLine("Select Options");
                 Console.WriteLine("1. Create new address book");
-                Console.WriteLine("2. Select from existing address books");
-                Console.WriteLine("3. Display address book");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("2. Select an address book");
+                Console.WriteLine("3. Display all address books");
+                Console.WriteLine("4. Delete an address book");
+                Console.WriteLine("5. Exit");
 
                 try
                 {
@@ -130,6 +131,43 @@ namespace AddressBookCSharp
                             Console.WriteLine();
                             break;
 
+                        case 4:
+                            if (dict.Count == 0)
+                            {
+                                throw new InvalidOperationException("No address book created yet");
+                            }
+
+                            flag = false;
+                            Console.WriteLine("Enter name of requested address book");
+                            name = Console.ReadLine();
+
+                            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
+                            {
+                                throw new NullReferenceException("Address book name cannot be null, empty or whitespace");
+                            }
+                            else
+                            {
+                                foreach (KeyValuePair<string, AddressBook> kvp in dict)
+                                {
+                                    if ((kvp.Key.ToLower()).Equals(name.ToLower()))
+                                    {
+                                        flag = true;
+                                        //AddressBook ab = kvp.Value;
+                                        //kvp.Value.AddressBookOperations(kvp.Key + ".csv");
+                                        dict.Remove(name);
+                                        File.Delete(kvp.Key + ".csv");
+                                        Console.WriteLine("Address book deleted.");
+                                    }
+                                }
+
+                            }
+
+                            if (!flag)
+                                Console.WriteLine("Address book name does not exist");
+
+                            Console.WriteLine();
+
+                            break;
 
                         default:
                             isTrue = false;
