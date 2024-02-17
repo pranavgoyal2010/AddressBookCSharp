@@ -4,11 +4,11 @@ namespace AddressBookCSharp;
 
 public class AddressBook
 {
-    List<Contact> list;
 
+    HashSet<Contact> list;
     public AddressBook()
     {
-        this.list = new List<Contact>();
+        this.list = new HashSet<Contact>();
     }
 
     public void AddPreviousContact(string firstName, string lastName, string address, string city,
@@ -41,7 +41,7 @@ public class AddressBook
 
             try
             {
-                int option;// = int.Parse(Console.ReadLine());
+                int option;
 
                 if (!int.TryParse(Console.ReadLine(), out option))
                 {
@@ -98,7 +98,12 @@ public class AddressBook
 
                         //ADDING NEW CONTACT
 
-                        list.Add(contact);
+                        bool isAdded = list.Add(contact);
+
+                        if (!isAdded)
+                        {
+                            throw new Exception("Duplicate entry: phone number and email already exists");
+                        }
 
                         //WRITING TO CSV FILE
                         string details = $"{contact.FirstName},{contact.LastName},{contact.Address},{contact.City},{contact.State},{contact.PostalCode},{contact.PhoneNumber},{contact.Email}\n";
@@ -211,14 +216,45 @@ public class AddressBook
                                     break;
                                 case 7:
                                     Console.WriteLine("Enter new Phone Number");
+                                    string oldPhoneNumber = contactToEdit.PhoneNumber;
                                     contactToEdit.PhoneNumber = Console.ReadLine();
-                                    Console.WriteLine("Phone Number updated");
+
+                                    //trying to add the updated contact to list.
+                                    //If its duplicate then it won't get added.
+                                    //otherwise after adding we remove the contact.
+                                    if (list.Add(contactToEdit))
+                                    {
+                                        Console.WriteLine("Phone Number updated");
+                                        list.Remove(contactToEdit);
+                                    }
+                                    else
+                                    {
+                                        contactToEdit.PhoneNumber = oldPhoneNumber;
+                                        throw new Exception("Duplicate entry: phone number and email already exists");
+                                    }
+
                                     break;
+
                                 case 8:
                                     Console.WriteLine("Enter new Email");
+                                    string oldEmail = contactToEdit.Email;
                                     contactToEdit.Email = Console.ReadLine();
-                                    Console.WriteLine("Email updated");
+
+                                    //trying to add the updated contact to list.
+                                    //If its duplicate then it won't get added.
+                                    //otherwise after adding we remove the contact.
+                                    if (list.Add(contactToEdit))
+                                    {
+                                        Console.WriteLine("Email updated");
+                                        list.Remove(contactToEdit);
+                                    }
+                                    else
+                                    {
+                                        contactToEdit.Email = oldEmail;
+                                        throw new Exception("Duplicate entry: phone number and email already exists");
+                                    }
                                     break;
+
                                 default:
                                     Console.WriteLine("Option does not exist");
                                     break;
@@ -338,6 +374,7 @@ public class AddressBook
         string pattern = @"^[0-9]{10}$";
         return Regex.IsMatch(input, pattern);
     }
+
 }
 
 

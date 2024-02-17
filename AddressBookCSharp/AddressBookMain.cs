@@ -48,7 +48,7 @@ namespace AddressBookCSharp
 
                 try
                 {
-                    int option;// = Convert.ToInt32(Console.ReadLine());
+                    int option;
 
                     if (!int.TryParse(Console.ReadLine(), out option))
                     {
@@ -77,6 +77,8 @@ namespace AddressBookCSharp
                                 File.AppendAllText(fileName, details);
 
                                 dict.Add(name, addressBook);
+
+                                Console.WriteLine("Address book created");
                             }
                             Console.WriteLine();
                             break;
@@ -152,8 +154,6 @@ namespace AddressBookCSharp
                                     if ((kvp.Key.ToLower()).Equals(name.ToLower()))
                                     {
                                         flag = true;
-                                        //AddressBook ab = kvp.Value;
-                                        //kvp.Value.AddressBookOperations(kvp.Key + ".csv");
                                         dict.Remove(name);
                                         File.Delete(kvp.Key + ".csv");
                                         Console.WriteLine("Address book deleted.");

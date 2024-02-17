@@ -127,5 +127,21 @@
             Console.WriteLine("Phone Number : " + PhoneNumber);
             Console.WriteLine("Email : " + Email);
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            Contact other = (Contact)obj;
+            return PhoneNumber == other.PhoneNumber && Email == other.Email;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(PhoneNumber, Email);
+        }
     }
 }
