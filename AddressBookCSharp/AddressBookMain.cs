@@ -1,4 +1,5 @@
-﻿namespace AddressBookCSharp
+﻿//using System.IO.File;
+namespace AddressBookCSharp
 {
     public class AddressBookMain
     {
@@ -6,6 +7,32 @@
         {
             Dictionary<string, AddressBook> dict = new Dictionary<string, AddressBook>();
             bool isTrue = true;
+            //string filePath = "C:\\Users\\prana\\Desktop\\BridgeLabz\\AddressBookCSharp\\AddressBookCSharp\\bin\\Debug\\net8.0";
+            //string[] csvFiles = Directory.GetFiles(filePath, "*.csv");
+            //string[] csvFiles = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.csv");
+
+            string[] filePaths = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.csv");
+            string[] csvFiles = new string[filePaths.Length];
+
+            for (int i = 0; i < filePaths.Length; i++)
+            {
+                csvFiles[i] = Path.GetFileName(filePaths[i]);
+            }
+
+            foreach (string csvFile in csvFiles)
+            {
+                //string file = csvFile;
+                string key = csvFile.Substring(0, csvFile.Length - 4);
+                AddressBook addressBook = new AddressBook();
+                string[] lines = File.ReadAllLines(csvFile);
+                for (int i = 1; i < lines.Length; i++)
+                {
+                    string[] details = lines[i].Split(",");
+                    addressBook.AddPreviousContacts(details[0], details[1], details[2], details[3], details[4], details[5], details[6], details[7]);
+                }
+
+                dict.Add(key, addressBook);
+            }
 
 
             while (isTrue)
@@ -24,7 +51,7 @@
                     {
                         case 1:
                             Console.WriteLine("Enter name for new Address book");
-                            string? name = Console.ReadLine();
+                            string name = Console.ReadLine();
                             AddressBook addressBook = new AddressBook();
 
                             if (name == null)
@@ -32,8 +59,16 @@
                                 //Console.WriteLine("Please enter name again");
                                 throw new ArgumentNullException("Please enter name again");
                             }
+                            else if (dict.ContainsKey(name))
+                            {
+                                throw new Exception("Name already exists.");
+                            }
                             else
                             {
+                                string fileName = name + ".csv";
+                                string details = "FirstName,LastName,Address,City,State,PostalCode,PhoneNumber,Email\n";
+                                File.AppendAllText(fileName, details);
+
                                 dict.Add(name, addressBook);
                             }
                             Console.WriteLine();
@@ -60,7 +95,8 @@
                                     {
                                         flag = true;
                                         AddressBook ab = kvp.Value;
-                                        ab.AddressBookOperations();
+                                        //file = kvp.Key;
+                                        kvp.Value.AddressBookOperations(kvp.Key + ".csv");
                                         dict[name] = ab;
                                     }
                                 }
@@ -75,7 +111,6 @@
                             break;
 
                         case 3:
-                            //int count = 1;
                             if (dict.Count == 0)
                             {
                                 throw new InvalidOperationException("No address book created yet");

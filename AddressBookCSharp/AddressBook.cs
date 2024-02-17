@@ -10,7 +10,23 @@ public class AddressBook
     {
         this.list = new List<Contact>();
     }
-    public void AddressBookOperations()
+
+    public void AddPreviousContacts(string firstName, string lastName, string address, string city,
+            string state, string postalCode, string phoneNumber, string email)
+    {
+        Contact contact = new Contact();
+        contact.FirstName = firstName;
+        contact.LastName = lastName;
+        contact.Address = address;
+        contact.City = city;
+        contact.State = state;
+        contact.PostalCode = postalCode;
+        contact.PhoneNumber = phoneNumber;
+        contact.Email = email;
+        this.list.Add(contact);
+        //this.list.Add(new Contact(firstName, lastName, address, city, state, postalCode, phoneNumber, email));
+    }
+    public void AddressBookOperations(string fileName)
     {
 
         bool isTrue = true;
@@ -75,9 +91,13 @@ public class AddressBook
                             contact.Email = input;
 
 
+
                         //ADDING NEW CONTACT
 
                         list.Add(contact);
+
+                        string details = $"{contact.FirstName},{contact.LastName},{contact.Address},{contact.City},{contact.State},{contact.PostalCode},{contact.PhoneNumber},{contact.Email}\n";
+                        File.AppendAllText(fileName, details);
 
                         Console.WriteLine("Contact added");
 
@@ -105,14 +125,16 @@ public class AddressBook
                         lastName = lastName.ToLower();
 
                         Contact? contactToEdit = null;
-
+                        int lineNumber = 0;
                         foreach (Contact c in list)
                         {
                             if ((c.FirstName.ToLower()).Equals(firstName) && (c.LastName.ToLower()).Equals(lastName))
                             {
                                 contactToEdit = c;
+                                lineNumber++;
                                 break;
                             }
+                            lineNumber++;
                         }
 
                         if (contactToEdit == null)
@@ -147,7 +169,7 @@ public class AddressBook
                                 case 3:
                                     Console.WriteLine("Enter new Address");
                                     contactToEdit.Address = Console.ReadLine();
-                                    Console.WriteLine("Address Name updated");
+                                    Console.WriteLine("Address updated");
                                     break;
                                 case 4:
                                     Console.WriteLine("Enter new City");
@@ -180,6 +202,13 @@ public class AddressBook
                             }
 
                         }
+
+                        string[] lines = File.ReadAllLines(fileName);
+
+                        details = $"{contactToEdit.FirstName},{contactToEdit.LastName},{contactToEdit.Address},{contactToEdit.City},{contactToEdit.State},{contactToEdit.PostalCode},{contactToEdit.PhoneNumber},{contactToEdit.Email}";
+                        lines[lineNumber] = details;
+                        File.WriteAllLines(fileName, lines);
+
                         Console.WriteLine();
                         break;
 
@@ -198,16 +227,18 @@ public class AddressBook
                         lastName = lastName.ToLower();
 
                         Contact contactToDelete = null;
-
+                        lineNumber = 0;
                         foreach (Contact c in list)
                         {
                             if ((c.FirstName.ToLower()).Equals(firstName) && (c.LastName.ToLower()).Equals(lastName))
                             {
                                 contactToDelete = c;
                                 list.Remove(c);
+                                lineNumber++;
                                 Console.WriteLine("Contact deleted");
                                 break;
                             }
+                            lineNumber++;
                         }
 
 
@@ -218,10 +249,21 @@ public class AddressBook
 
                         Console.WriteLine();
 
-                        /*foreach (Contact c in addressBook)
+                        lines = File.ReadAllLines(fileName);
+                        if (lineNumber >= 0 && lineNumber < lines.Length)
                         {
-                            c.PrintContact();
-                        }*/
+                            // Remove the line at the specified index
+                            string[] updatedLines = new string[lines.Length - 1];
+                            int j = 0;
+                            for (int i = 0; i < lines.Length; i++)
+                            {
+                                if (i != lineNumber)
+                                {
+                                    updatedLines[j++] = lines[i];
+                                }
+                            }
+                            File.WriteAllLines(fileName, updatedLines);
+                        }
 
                         break;
 
