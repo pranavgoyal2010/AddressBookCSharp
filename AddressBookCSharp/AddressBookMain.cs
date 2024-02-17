@@ -7,13 +7,13 @@ namespace AddressBookCSharp
         {
             Dictionary<string, AddressBook> dict = new Dictionary<string, AddressBook>();
             bool isTrue = true;
-            //string filePath = "C:\\Users\\prana\\Desktop\\BridgeLabz\\AddressBookCSharp\\AddressBookCSharp\\bin\\Debug\\net8.0";
-            //string[] csvFiles = Directory.GetFiles(filePath, "*.csv");
-            //string[] csvFiles = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.csv");
 
+            //Gives the absolute path where each csv file is stored.
             string[] filePaths = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.csv");
+            //creating array to store just filenames.
             string[] csvFiles = new string[filePaths.Length];
 
+            //extracting the filename with extension from absolute path and storing it in array.
             for (int i = 0; i < filePaths.Length; i++)
             {
                 csvFiles[i] = Path.GetFileName(filePaths[i]);
@@ -21,14 +21,16 @@ namespace AddressBookCSharp
 
             foreach (string csvFile in csvFiles)
             {
-                //string file = csvFile;
+
                 string key = csvFile.Substring(0, csvFile.Length - 4);
                 AddressBook addressBook = new AddressBook();
                 string[] lines = File.ReadAllLines(csvFile);
+
+                //ignoring the headings hence starting from index 1
                 for (int i = 1; i < lines.Length; i++)
                 {
                     string[] details = lines[i].Split(",");
-                    addressBook.AddPreviousContacts(details[0], details[1], details[2], details[3], details[4], details[5], details[6], details[7]);
+                    addressBook.AddPreviousContact(details[0], details[1], details[2], details[3], details[4], details[5], details[6], details[7]);
                 }
 
                 dict.Add(key, addressBook);
@@ -45,7 +47,12 @@ namespace AddressBookCSharp
 
                 try
                 {
-                    int option = Convert.ToInt32(Console.ReadLine());
+                    int option;// = Convert.ToInt32(Console.ReadLine());
+
+                    if (!int.TryParse(Console.ReadLine(), out option))
+                    {
+                        throw new NullReferenceException("Enter valid option");
+                    }
 
                     switch (option)
                     {
@@ -54,14 +61,13 @@ namespace AddressBookCSharp
                             string name = Console.ReadLine();
                             AddressBook addressBook = new AddressBook();
 
-                            if (name == null)
+                            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
                             {
-                                //Console.WriteLine("Please enter name again");
-                                throw new ArgumentNullException("Please enter name again");
+                                throw new NullReferenceException("Address book name cannot be null, empty or whitespace");
                             }
                             else if (dict.ContainsKey(name))
                             {
-                                throw new Exception("Name already exists.");
+                                throw new Exception("Address book name already exists.");
                             }
                             else
                             {
@@ -80,12 +86,15 @@ namespace AddressBookCSharp
                             {
                                 throw new InvalidOperationException("No address book created yet");
                             }
+
                             Console.WriteLine("Enter name of requested address book");
                             name = Console.ReadLine();
+
                             bool flag = false;
-                            if (name == null)
+
+                            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
                             {
-                                throw new ArgumentNullException("Please enter name again");
+                                throw new NullReferenceException("Address book name cannot be null, empty or whitespace");
                             }
                             else
                             {
@@ -95,7 +104,6 @@ namespace AddressBookCSharp
                                     {
                                         flag = true;
                                         AddressBook ab = kvp.Value;
-                                        //file = kvp.Key;
                                         kvp.Value.AddressBookOperations(kvp.Key + ".csv");
                                         dict[name] = ab;
                                     }
@@ -131,6 +139,7 @@ namespace AddressBookCSharp
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
+                    Console.WriteLine();
                 }
 
             }

@@ -11,7 +11,7 @@ public class AddressBook
         this.list = new List<Contact>();
     }
 
-    public void AddPreviousContacts(string firstName, string lastName, string address, string city,
+    public void AddPreviousContact(string firstName, string lastName, string address, string city,
             string state, string postalCode, string phoneNumber, string email)
     {
         Contact contact = new Contact();
@@ -24,7 +24,6 @@ public class AddressBook
         contact.PhoneNumber = phoneNumber;
         contact.Email = email;
         this.list.Add(contact);
-        //this.list.Add(new Contact(firstName, lastName, address, city, state, postalCode, phoneNumber, email));
     }
     public void AddressBookOperations(string fileName)
     {
@@ -42,7 +41,12 @@ public class AddressBook
 
             try
             {
-                int option = int.Parse(Console.ReadLine());
+                int option;// = int.Parse(Console.ReadLine());
+
+                if (!int.TryParse(Console.ReadLine(), out option))
+                {
+                    throw new NullReferenceException("Enter valid option");
+                }
 
                 switch (option)
                 {
@@ -96,6 +100,7 @@ public class AddressBook
 
                         list.Add(contact);
 
+                        //WRITING TO CSV FILE
                         string details = $"{contact.FirstName},{contact.LastName},{contact.Address},{contact.City},{contact.State},{contact.PostalCode},{contact.PhoneNumber},{contact.Email}\n";
                         File.AppendAllText(fileName, details);
 
@@ -112,20 +117,32 @@ public class AddressBook
                         //EDITING CONTACT
                         if (list.Count == 0)
                         {
-                            //Console.WriteLine("Address Book is empty");
-                            //Console.WriteLine();
-                            //break;
-                            throw new InvalidOperationException("contact list is empty");
+                            throw new InvalidOperationException("Contact list is empty");
                         }
                         Console.WriteLine("Enter first name and last name of contact to edit");
 
+
                         string firstName = Console.ReadLine();
+
+                        if (string.IsNullOrEmpty(firstName) || string.IsNullOrWhiteSpace(firstName))
+                        {
+                            throw new NullReferenceException("First name cannot be null, empty or whitespace");
+                        }
                         string lastName = Console.ReadLine();
+                        if (string.IsNullOrEmpty(lastName) || string.IsNullOrWhiteSpace(lastName))
+                        {
+                            throw new NullReferenceException("Last name cannot be null, empty or whitespace");
+                        }
+
+
                         firstName = firstName.ToLower();
                         lastName = lastName.ToLower();
 
-                        Contact? contactToEdit = null;
+                        Contact contactToEdit = null;
+
+                        //recording the row number of the contact we want to delete.
                         int lineNumber = 0;
+
                         foreach (Contact c in list)
                         {
                             if ((c.FirstName.ToLower()).Equals(firstName) && (c.LastName.ToLower()).Equals(lastName))
@@ -139,7 +156,7 @@ public class AddressBook
 
                         if (contactToEdit == null)
                         {
-                            throw new ArgumentNullException("Contact does not exist");
+                            throw new NullReferenceException("Contact does not exist");
                         }
                         else
                         {
@@ -152,7 +169,13 @@ public class AddressBook
                             Console.WriteLine("6. Postal Code");
                             Console.WriteLine("7. Phone Number");
                             Console.WriteLine("8. Email");
-                            int choice = int.Parse(Console.ReadLine());
+
+                            int choice;
+
+                            if (!int.TryParse(Console.ReadLine(), out choice))
+                            {
+                                throw new NullReferenceException("Enter valid option");
+                            }
 
                             switch (choice)
                             {
@@ -197,7 +220,7 @@ public class AddressBook
                                     Console.WriteLine("Email updated");
                                     break;
                                 default:
-                                    Console.WriteLine("Wrong input try again.");
+                                    Console.WriteLine("Option does not exist");
                                     break;
                             }
 
@@ -214,17 +237,26 @@ public class AddressBook
 
 
                     case 3:
-                        //Console.WriteLine();
                         if (list.Count == 0)
                         {
-                            throw new InvalidOperationException("contact list is empty");
+                            throw new InvalidOperationException("Contact list is empty");
                         }
                         Console.WriteLine("Enter first name and last name of contact to delete");
 
                         firstName = Console.ReadLine();
+
+                        if (string.IsNullOrEmpty(firstName) || string.IsNullOrWhiteSpace(firstName))
+                        {
+                            throw new NullReferenceException("First name cannot be null, empty or whitespace");
+                        }
                         lastName = Console.ReadLine();
+                        if (string.IsNullOrEmpty(lastName) || string.IsNullOrWhiteSpace(lastName))
+                        {
+                            throw new NullReferenceException("Last name cannot be null, empty or whitespace");
+                        }
                         firstName = firstName.ToLower();
                         lastName = lastName.ToLower();
+
 
                         Contact contactToDelete = null;
                         lineNumber = 0;
@@ -244,7 +276,7 @@ public class AddressBook
 
                         if (contactToDelete == null)
                         {
-                            throw new ArgumentNullException("Contact does not exist");
+                            throw new NullReferenceException("Contact does not exist");
                         }
 
                         Console.WriteLine();
@@ -270,7 +302,7 @@ public class AddressBook
                     case 4:
                         if (list.Count == 0)
                         {
-                            throw new InvalidOperationException("contact list is empty");
+                            throw new InvalidOperationException("Contact list is empty");
                         }
                         foreach (Contact c in list)
                         {
@@ -288,11 +320,11 @@ public class AddressBook
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                Console.WriteLine();
             }
 
         }
 
-        //return addressBook;
     }
 
     public bool isValidEmail(string input)

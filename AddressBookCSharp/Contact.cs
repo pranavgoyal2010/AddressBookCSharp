@@ -11,22 +11,6 @@
         private string phoneNumber;
         private string email;
 
-        /*public Contact()
-        {
-
-        }
-        public Contact(string firstName, string lastName, string address, string city,
-            string state, string postalCode, string phoneNumber, string email)
-        {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.address = address;
-            this.city = city;
-            this.state = state;
-            this.postalCode = postalCode;
-            this.phoneNumber = phoneNumber;
-            this.email = email;
-        }*/
         public string FirstName
         {
             get { return firstName; }
