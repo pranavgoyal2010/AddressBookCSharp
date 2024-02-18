@@ -32,22 +32,9 @@
               "RelativeDocumentMoniker": "AddressBookMain.cs",
               "ToolTip": "C:\\Users\\prana\\Desktop\\BridgeLabz\\AddressBookCSharp\\AddressBookCSharp\\AddressBookMain.cs",
               "RelativeToolTip": "AddressBookMain.cs",
-              "ViewState": "AQIAAEMAAAAAAAAAAAAQwAIAAAABAAAA",
+              "ViewState": "AQIAAGIAAAAAAAAAAAAAAI8AAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-15T08:55:34.185Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Contact.cs",
-              "DocumentMoniker": "C:\\Users\\prana\\Desktop\\BridgeLabz\\AddressBookCSharp\\AddressBookCSharp\\Contact.cs",
-              "RelativeDocumentMoniker": "Contact.cs",
-              "ToolTip": "C:\\Users\\prana\\Desktop\\BridgeLabz\\AddressBookCSharp\\AddressBookCSharp\\Contact.cs",
-              "RelativeToolTip": "Contact.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHUAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-14T05:32:57.575Z",
               "EditorCaption": ""
             },
             {
@@ -58,9 +45,22 @@
               "RelativeDocumentMoniker": "AddressBook.cs",
               "ToolTip": "C:\\Users\\prana\\Desktop\\BridgeLabz\\AddressBookCSharp\\AddressBookCSharp\\AddressBook.cs",
               "RelativeToolTip": "AddressBook.cs",
-              "ViewState": "AQIAABYBAAAAAAAAAAAgwJwAAAAmAAAA",
+              "ViewState": "AQIAAPUAAAAAAAAAAAAgwCEBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-14T04:59:43.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Contact.cs",
+              "DocumentMoniker": "C:\\Users\\prana\\Desktop\\BridgeLabz\\AddressBookCSharp\\AddressBookCSharp\\Contact.cs",
+              "RelativeDocumentMoniker": "Contact.cs",
+              "ToolTip": "C:\\Users\\prana\\Desktop\\BridgeLabz\\AddressBookCSharp\\AddressBookCSharp\\Contact.cs",
+              "RelativeToolTip": "Contact.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwJEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-14T05:32:57.575Z",
               "EditorCaption": ""
             }
           ]

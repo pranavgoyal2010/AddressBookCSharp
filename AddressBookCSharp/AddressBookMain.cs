@@ -60,9 +60,10 @@ namespace AddressBookCSharp
                         case 1:
                             Console.WriteLine("Enter name for new Address book");
                             string name = Console.ReadLine();
+                            name = name.ToLower();
                             AddressBook addressBook = new AddressBook();
 
-                            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
+                            if (string.IsNullOrWhiteSpace(name))
                             {
                                 throw new NullReferenceException("Address book name cannot be null, empty or whitespace");
                             }
@@ -92,10 +93,11 @@ namespace AddressBookCSharp
 
                             Console.WriteLine("Enter name of requested address book");
                             name = Console.ReadLine();
+                            name = name.ToLower();
 
                             bool flag = false;
 
-                            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
+                            if (string.IsNullOrWhiteSpace(name))
                             {
                                 throw new NullReferenceException("Address book name cannot be null, empty or whitespace");
                             }
@@ -103,11 +105,11 @@ namespace AddressBookCSharp
                             {
                                 foreach (KeyValuePair<string, AddressBook> kvp in dict)
                                 {
-                                    if ((kvp.Key.ToLower()).Equals(name.ToLower()))
+                                    if ((kvp.Key).Equals(name))
                                     {
                                         flag = true;
                                         AddressBook ab = kvp.Value;
-                                        kvp.Value.AddressBookOperations(kvp.Key + ".csv");
+                                        ab.AddressBookOperations(kvp.Key + ".csv");
                                         dict[name] = ab;
                                     }
                                 }
@@ -142,8 +144,9 @@ namespace AddressBookCSharp
                             flag = false;
                             Console.WriteLine("Enter name of requested address book");
                             name = Console.ReadLine();
+                            name = name.ToLower();
 
-                            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
+                            if (string.IsNullOrWhiteSpace(name))
                             {
                                 throw new NullReferenceException("Address book name cannot be null, empty or whitespace");
                             }
@@ -151,10 +154,10 @@ namespace AddressBookCSharp
                             {
                                 foreach (KeyValuePair<string, AddressBook> kvp in dict)
                                 {
-                                    if ((kvp.Key.ToLower()).Equals(name.ToLower()))
+                                    if ((kvp.Key).Equals(name))
                                     {
                                         flag = true;
-                                        dict.Remove(name);
+                                        dict.Remove(kvp.Key);
                                         File.Delete(kvp.Key + ".csv");
                                         Console.WriteLine("Address book deleted.");
                                     }
