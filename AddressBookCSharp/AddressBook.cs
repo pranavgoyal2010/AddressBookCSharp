@@ -4,12 +4,15 @@ namespace AddressBookCSharp;
 
 public class AddressBook
 {
+    /* REASON FOR NOT USING HASHSET
+     * If the properties of Contact objects change after they are added to the HashSet, 
+     * their hash codes may change, causing the HashSet to lose track of them. 
+     * Hence the properties used in the Equals and GetHashCode methods 
+     * do not change after being added to the HashSet*/
 
-    //HashSet<Contact> list;
     List<Contact> list;
     public AddressBook()
     {
-        //this.list = new HashSet<Contact>();
         this.list = new List<Contact>();
     }
 
@@ -100,9 +103,6 @@ public class AddressBook
 
                         //ADDING NEW CONTACT
 
-                        //bool isAdded =                         
-
-                        //if (IsDuplicate(contact))
                         if (list.Any(c => c.PhoneNumber == contact.PhoneNumber && c.Email == contact.Email))
                         {
                             throw new Exception("Duplicate entry: phone number and email already exists");
@@ -129,19 +129,30 @@ public class AddressBook
                         {
                             throw new InvalidOperationException("Contact list is empty");
                         }
-                        Console.WriteLine("Enter first name and last name of contact to edit");
+                        Console.WriteLine("Enter phone number of contact to edit");
 
-
-                        string firstName = Console.ReadLine();
-
-                        if (string.IsNullOrWhiteSpace(firstName))
+                        string phoneNumber = Console.ReadLine();
+                        if (string.IsNullOrWhiteSpace(phoneNumber))
                         {
-                            throw new NullReferenceException("First name cannot be null, empty or whitespace");
+                            throw new NullReferenceException("phone number cannot be null, empty or whitespace");
                         }
-                        string lastName = Console.ReadLine();
-                        if (string.IsNullOrWhiteSpace(lastName))
+                        if (!isValidPhoneNumber(phoneNumber))
                         {
-                            throw new NullReferenceException("Last name cannot be null, empty or whitespace");
+                            Console.WriteLine("Invalid Phone number");
+                            break;
+                        }
+
+                        Console.WriteLine("Enter email of contact to edit");
+
+                        string email = Console.ReadLine();
+                        if (string.IsNullOrWhiteSpace(email))
+                        {
+                            throw new NullReferenceException("email cannot be null, empty or whitespace");
+                        }
+                        if (!isValidEmail(email))
+                        {
+                            Console.WriteLine("Invalid Email");
+                            break;
                         }
 
                         Contact contactToEdit = null;
@@ -151,8 +162,7 @@ public class AddressBook
 
                         foreach (Contact c in list)
                         {
-                            //name comparsion is case sensitive
-                            if ((c.FirstName).Equals(firstName) && (c.LastName).Equals(lastName))
+                            if ((c.PhoneNumber).Equals(phoneNumber) && (c.PhoneNumber).Equals(phoneNumber))
                             {
                                 contactToEdit = c;
                                 lineNumber++;
@@ -218,22 +228,6 @@ public class AddressBook
                                     break;
                                 case 7:
                                     Console.WriteLine("Enter new Phone Number");
-                                    /*string oldPhoneNumber = contactToEdit.PhoneNumber;
-                                    contactToEdit.PhoneNumber = Console.ReadLine();
-
-                                    //trying to add the updated contact to list.
-                                    //If its duplicate then it won't get added.
-                                    //otherwise after adding we remove the contact.
-                                    if (list.Add(contactToEdit))
-                                    {
-                                        Console.WriteLine("Phone Number updated");
-                                        list.Remove(contactToEdit);
-                                    }
-                                    else
-                                    {
-                                        contactToEdit.PhoneNumber = oldPhoneNumber;
-                                        throw new Exception("Duplicate entry: phone number and email already exists");
-                                    }*/
 
                                     string newPhoneNumber = Console.ReadLine();
                                     if (string.IsNullOrWhiteSpace(newPhoneNumber))
@@ -251,22 +245,7 @@ public class AddressBook
 
                                 case 8:
                                     Console.WriteLine("Enter new Email");
-                                    /*string oldEmail = contactToEdit.Email;
-                                    contactToEdit.Email = Console.ReadLine();
 
-                                    //trying to add the updated contact to list.
-                                    //If its duplicate then it won't get added.
-                                    //otherwise after adding we remove the contact.
-                                    if (list.Add(contactToEdit))
-                                    {
-                                        Console.WriteLine("Email updated");
-                                        list.Remove(contactToEdit);
-                                    }
-                                    else
-                                    {
-                                        contactToEdit.Email = oldEmail;
-                                        throw new Exception("Duplicate entry: phone number and email already exists");
-                                    }*/
                                     string newEmail = Console.ReadLine();
                                     if (string.IsNullOrWhiteSpace(newEmail))
                                     {
@@ -303,26 +282,38 @@ public class AddressBook
                         {
                             throw new InvalidOperationException("Contact list is empty");
                         }
-                        Console.WriteLine("Enter first name and last name of contact to delete");
 
-                        firstName = Console.ReadLine();
+                        Console.WriteLine("Enter phone number of contact to delete");
 
-                        if (string.IsNullOrWhiteSpace(firstName))
+                        phoneNumber = Console.ReadLine();
+                        if (string.IsNullOrWhiteSpace(phoneNumber))
                         {
-                            throw new NullReferenceException("First name cannot be null, empty or whitespace");
+                            throw new NullReferenceException("phone number cannot be null, empty or whitespace");
                         }
-                        lastName = Console.ReadLine();
-                        if (string.IsNullOrWhiteSpace(lastName))
+                        if (!isValidPhoneNumber(phoneNumber))
                         {
-                            throw new NullReferenceException("Last name cannot be null, empty or whitespace");
+                            Console.WriteLine("Invalid Phone number");
+                            break;
+                        }
+
+                        Console.WriteLine("Enter email of contact to delete");
+
+                        email = Console.ReadLine();
+                        if (string.IsNullOrWhiteSpace(email))
+                        {
+                            throw new NullReferenceException("email cannot be null, empty or whitespace");
+                        }
+                        if (!isValidEmail(email))
+                        {
+                            Console.WriteLine("Invalid Email");
+                            break;
                         }
 
                         Contact contactToDelete = null;
                         lineNumber = 0;
                         foreach (Contact c in list)
                         {
-                            //name comparison is case sensitive                            
-                            if ((c.FirstName).Equals(firstName) && (c.LastName).Equals(lastName))
+                            if ((c.PhoneNumber).Equals(phoneNumber) && (c.PhoneNumber).Equals(phoneNumber))
                             {
                                 contactToDelete = c;
                                 list.Remove(c);
@@ -398,10 +389,7 @@ public class AddressBook
         string pattern = @"^[0-9]{10}$";
         return Regex.IsMatch(input, pattern);
     }
-    /*private bool IsDuplicate(Contact newContact)
-    {
-        return list.Any(c => c.PhoneNumber == newContact.PhoneNumber && c.Email == newContact.Email);
-    }*/
+
 }
 
 

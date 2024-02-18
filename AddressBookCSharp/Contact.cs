@@ -18,7 +18,7 @@ public class Contact
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException("First name cannot be null or empty");
+                throw new ArgumentException("First name cannot be null, empty or whitespace");
             }
             firstName = value;
         }
@@ -31,7 +31,7 @@ public class Contact
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException("Last name cannot be null or empty");
+                throw new ArgumentException("Last name cannot be null, empty or whitespace");
             }
             lastName = value;
         }
@@ -44,7 +44,7 @@ public class Contact
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException("Address cannot be null or empty");
+                throw new ArgumentException("Address cannot be null, empty or whitespace");
             }
             address = value;
         }
@@ -57,7 +57,7 @@ public class Contact
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException("City cannot be null or empty");
+                throw new ArgumentException("City cannot be null, empty or whitespace");
             }
             city = value;
         }
@@ -70,7 +70,7 @@ public class Contact
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException("State cannot be null or empty");
+                throw new ArgumentException("State cannot be null, empty or whitespace");
             }
             state = value;
         }
@@ -83,7 +83,7 @@ public class Contact
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException("Postal code cannot be null or empty");
+                throw new ArgumentException("Postal code cannot be null, empty or whitespace");
             }
             postalCode = value;
         }
@@ -96,7 +96,7 @@ public class Contact
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException("Phone number cannot be null or empty");
+                throw new ArgumentException("Phone number cannot be null, empty or whitespace");
             }
             phoneNumber = value;
         }
@@ -109,7 +109,7 @@ public class Contact
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException("Email cannot be null or empty");
+                throw new ArgumentException("Email cannot be null, empty or whitespace");
             }
             email = value.ToLower();
         }
