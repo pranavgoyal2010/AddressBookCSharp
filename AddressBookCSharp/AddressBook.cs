@@ -162,7 +162,7 @@ public class AddressBook
 
                         foreach (Contact c in list)
                         {
-                            if ((c.PhoneNumber).Equals(phoneNumber) && (c.PhoneNumber).Equals(phoneNumber))
+                            if ((c.PhoneNumber).Equals(phoneNumber) && (c.Email).Equals(email))
                             {
                                 contactToEdit = c;
                                 lineNumber++;
@@ -308,12 +308,12 @@ public class AddressBook
                             Console.WriteLine("Invalid Email");
                             break;
                         }
-
+                        email = email.ToLower();
                         Contact contactToDelete = null;
                         lineNumber = 0;
                         foreach (Contact c in list)
                         {
-                            if ((c.PhoneNumber).Equals(phoneNumber) && (c.PhoneNumber).Equals(phoneNumber))
+                            if ((c.PhoneNumber).Equals(phoneNumber) && (c.Email).Equals(email))
                             {
                                 contactToDelete = c;
                                 list.Remove(c);
